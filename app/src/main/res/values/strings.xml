@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MySpinner</string>
+    <string name="first_fragment_label">Tanggal</string>
+    <string name="second_fragment_label">Waktu</string>
+    <array name="repeat">
+        <item>Once</item>
+        <item>Daily</item>
+        <item>Mon to Fri</item>
+    </array>
+
+</resources>

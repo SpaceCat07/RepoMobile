@@ -1,48 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:paddingVertical="30dp"
-    tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/header"
+    <!-- Your content here -->
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:id="@+id/tab_layout"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <include layout="@layout/header_file"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/tengah"
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingTop="100dp"
-        android:gravity="center_horizontal">
+        android:layout_height="0dp"
+        android:id="@+id/view_pager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"/>
+        <!-- Add more views as needed -->
 
-        <ImageView
-            android:id="@+id/head_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/headline"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_to_add_task"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Task"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/theme"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="50dp"/>
-    </LinearLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

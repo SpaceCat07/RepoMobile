@@ -1,25 +1,32 @@
 package com.example.myspinner
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import androidx.activity.enableEdgeToEdge
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.example.myspinner.databinding.ActivityMainBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    companion object {
+        @StringRes
+        private val TAB_TITLE = intArrayOf(R.string.tab_txt_1, R.string.tab_txt_2)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(binding.root)
 
+        val sectionPagerAdapter = SectionPagerAdapter(this)
+        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionPagerAdapter
 
-        binding.btnToAddTask.setOnClickListener {
-            val intentToSecondActivity = Intent(this, SecondActivity::class.java)
-            startActivity(intentToSecondActivity)
-        }
+        val tabs : TabLayout = findViewById(R.id.tab_layout)
+        TabLayoutMediator(tabs, viewPager) {
+            tab, position ->
+            tab.text = resources.getString(TAB_TITLE[position])
+        }.attach()
     }
 }
